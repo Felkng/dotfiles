@@ -19,7 +19,7 @@ set hlsearch
 "Enable smartcase search sensitivity"
 set ignorecase
 set smartcase
-
+set incsearch
 "Identation using spaces"
 "tabstop: width of tab character
 "softtabstop: fine tunes the amount of whitespaces to be added
@@ -80,6 +80,10 @@ Plug 'preservim/nerdtree'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'vim-airline/vim-airline'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+
+" Function to get the current Git branch
 
 call plug#end()
 
