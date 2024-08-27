@@ -40,26 +40,6 @@ set showmatch
 "Add relative lines
 set relativenumber
 
-"Add statusline
-function! GitBranch()
-    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-" Function to format Git branch for the status line
-function! StatuslineGit()
-    let l:branchname = GitBranch()
-    return strlen(l:branchname) > 0 ? '   '.l:branchname.' ' : ''
-endfunction
-
-function! GitBranch()
-    return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-    let l:branchname = GitBranch()
-    return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
-
 "remove trailing whitespace from Python and Fortran files"
 autocmd BufWritePre *.py: %s/\s\+$//e
 
