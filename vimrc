@@ -80,8 +80,10 @@ Plug 'preservim/nerdtree'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'tpope/vim-fugitive'
 
 " Function to get the current Git branch
 
@@ -91,6 +93,10 @@ if isdirectory(expand($HOME . '/.vim/plugged/vim-airline/'))
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_powerline_fonts = 1
     set laststatus=2
+    let g:airline_detect_paste=1
+    let g:airline_detect_modified=1
+
+
 endif
 
 
