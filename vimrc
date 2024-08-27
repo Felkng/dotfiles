@@ -90,10 +90,28 @@ call plug#end()
 if isdirectory(expand($HOME . '/.vim/plugged/vim-airline/'))
     let g:airline#extensions#tabline#enabled = 1
     let g:airline_powerline_fonts = 1
-    let g:airline_theme = 'powerlineish'
     set laststatus=2
 endif
 
+
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute ('LspDocumentFormatSync')
+endfunction
+
+augroup lsp_install
+    au!
+    "call s:on_lsp_buffer_enabled (set the lsp shortcuts) when an lsp server
+    "is registered for a buffer
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 function! OnLspBufferEnabled() abort
     setlocal omnifunc=lsp#complete
